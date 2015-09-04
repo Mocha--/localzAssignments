@@ -1,0 +1,106 @@
+<aside class="main-sidebar" body-style="true" wrapper-style="true">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" tree-view="true">
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" style="margin-top: 20%;">
+            <li class="header">Main Navigation</li>
+            <li class="treeview" menu-active id="usersMenu">
+                <a ui-sref="users">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="treeview" menu-active id="eventsMenu">
+                <a ui-sref="events">
+                    <i class="fa fa-tasks"></i>
+                    <span>Events</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<div class="content-wrapper" height="100%">
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <i class="fa fa-tasks"></i>
+                        <h3 class="box-title">Events</h3>
+                    </div>
+                    <div class="box-body" style="min-height: 800px;">
+                        <!-- /.chart-responsive -->
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Date Time</th>
+                                        <th>Customer</th>
+                                        <th>Loaction</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="event in events">
+                                        <td>
+                                            <span>{{event.eventDateTime}}</span>
+                                        </td>
+                                        <td>
+                                            <a ng-click="customerIdClick(event)" data-toggle="modal" data-target="#openedUser" data-target="" style="cursor:pointer;">{{event.customerId}}</a>
+                                        </td>
+                                        <td>
+                                            <span class="">{{event.triggeredLocation}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{event.triggerType}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Modal-->
+<div class="modal fade" id="openedUser" role="dialog">
+    <div class="modal-dialog" style="width:40%; margin-top: 5%">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-blue">User Information</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <span class="required-field">First Name</span>
+                        <input type="text" name="dateTime" id="dateTime" class="form-control" maxlength="150" ng-model="openedUser.firstName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Last Name</span>
+                        <input type="text" name="location" id="location" class="form-control" maxlength="150" ng-model="openedUser.lastName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Mobile</span>
+                        <input type="text" name="type" id="type" class="form-control" maxlength="150" ng-model="openedUser.mobile" readonly>
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Email</span>
+                        <input type="text" name="type" id="type" class="form-control" maxlength="150" ng-model="openedUser.email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Location</span>
+                        <input type="text" name="type" id="type" class="form-control" maxlength="150" ng-model="openedUser.location" readonly>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

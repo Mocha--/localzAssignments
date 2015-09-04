@@ -1,0 +1,16 @@
+{
+    // enforcing options
+    "forin": true,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    // relaxing options
+    "asi": true,
+    // environment
+    "devel": true,
+    "node": true,
+    "predef": [
+        "moment",
+        "angular"
+    ]
+}

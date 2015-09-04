@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="localzApp">
+
+<head>
+    <title>Localz</title>
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/AdminLTE.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/loading.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/page.index.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <!-- ./Css -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/async/lib/async.js"></script>
+    <script src="node_modules/string-format/lib/string-format.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+</head>
+
+<body class="skin-blue">
+    <div class="wrapper" id="wrapper">
+        <div ui-view="nav"></div>
+        <div ui-view="container"></div>
+    </div>
+    <script src="app/app.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/app.restapi.js"></script>
+    <script src="app/app.router.js"></script>
+    <script src="app/app.shared.js"></script>
+    <script src="app/shared/title.js"></script>
+    <script src="app/shared/commonDirective.js"></script>
+    <script src="app/app.components.js"></script>
+    <script src="app/components/user/user.js"></script>
+    <script src="app/components/event/event.js"></script>
+    <script src="app/components/nav/nav.js"></script>
+    <script src="app/components/home/home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+.bg-primary {
+    background-color: #00acd6 !important;
+}
+
+.small-box .icon {
+    color: #00acd6;
+}
+
+.small-box .small-box-footer {
+    background: rgba(0, 0, 0, 0.03)
+}
+
+.text-black {
+    color: #333 !important;
+}
+
+.treeview-menu {
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+}
+
+.fa {
+	color:#3c8dbc;
+}
+
+blockquote {
+	font-size: 15px;
+}

@@ -1,0 +1,37 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a ui-sref="home" class="logo">
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>L</b>ocalz</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <div class="navbar-custom-menu" style="margin-right:5%;">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer">
+                        <img src="assets/images/man-icon.png" class="user-image" alt="User Image" />
+                        <span class="hidden-xs">{{username}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="assets/images/man-icon.png" class="img-circle" alt="User Image" />
+                            <p>{{username}}</p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div align="center">
+                                <a class="btn btn-default btn-flat" ng-click="logoutClick()">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- 
+<script src="assets/js/app.js"></script> -->

@@ -1,0 +1,173 @@
+<aside class="main-sidebar" body-style="true" wrapper-style="true">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" tree-view="true">
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" style="margin-top: 20%;">
+            <li class="header">Main Navigation</li>
+            <li class="treeview" menu-active id="usersMenu">
+                <a ui-sref="users">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="treeview" menu-active id="eventsMenu">
+                <a ui-sref="events">
+                    <i class="fa fa-tasks"></i>
+                    <span>Events</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<div class="content-wrapper" height="100%">
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <i class="fa fa-users"></i>
+                        <h3 class="box-title">Users</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-toggle="modal" data-target="#newUser" ng-click="newUserClick()"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body" style="min-height: 800px;">
+                        <!-- /.chart-responsive -->
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Name
+                                            <div class="pull-right">Email</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="user in users">
+                                        <td>
+                                            <a toggle-detail="true" ng-click="$parent.openDetailClick(user)" id="{{user._id}}" data-toggle="collapse" data-target="" style="cursor:pointer;">{{user.firstName + ' ' + user.lastName}}</a>
+                                            <span class="pull-right">{{user.email}}</span>
+                                            <div id="{{user._id + 'detail'}}" class="collapse in detail" style="position: relative; margin-top: 20px; margin-bottom: 20px; display: none">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <form ng-submit="$parent.editClick(user)">
+                                                            <span class="detail info">
+                                                                <label>First Name</label>
+                                                                <input placeholder="First Name" ng-model="user.firstName" ng-required="true">
+                                                            </span>
+                                                            <span class="detail info">
+                                                                <label>Last Name</label>
+                                                                <input placeholder="Last Name" ng-model="user.lastName" ng-required="true">
+                                                            </span class="detail info">
+                                                            <span class="detail info">
+                                                                <label>Mobile</label>
+                                                                <input placeholder="Mobile" ng-model="user.mobile">
+                                                            </span>
+                                                            <span class="detail info">
+                                                                <label>Email</label>
+                                                                <input type="email" placeholder="Email" ng-model="user.email">
+                                                            </span>
+                                                            <span class="detail info">
+                                                                <label>Location</label>
+                                                                <input placeholder="Location" ng-model="user.location">
+                                                            </span>
+                                                            <span>
+                                                                <button type="button" class="btn btn-primary" style="float: right;" ng-click="$parent.newEventClick(user)" data-toggle="modal" data-target="#newEvent">New Event</button>
+                                                                <button class="btn btn-primary detail info" style="float: right" ng-click="">Edit Info</button>     
+                                                            </span>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <b>events:</b> <span ng-show="$parent.events.length == 0">No Events Currently.</span>
+                                                        <ul>
+                                                            <li ng-repeat="event in $parent.events">
+                                                                <label>Date Time : {{event.eventDateTime}}</label> <b>|</b>
+                                                                <label>Location : {{event.triggeredLocation}} </label> <b>|</b>
+                                                                <label>Type : {{event.triggerType}} </label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Modal-->
+<div class="modal fade" id="newEvent" role="dialog">
+    <div class="modal-dialog" style="width:40%; margin-top: 5%">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-blue">Add New Event</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span class="required-field">Date Time</span>
+                        <input type="text" name="dateTime" id="dateTime" class="form-control" maxlength="150" ng-model="newEvent.dateTime" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Location</span>
+                        <input type="text" name="location" id="location" class="form-control" maxlength="150" ng-model="newEvent.location" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Type</span>
+                        <input type="text" name="type" id="type" class="form-control" maxlength="150" ng-model="newEvent.type" ng-required="true">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal" ng-click="newEventSubmit()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal-->
+<div class="modal fade" id="newUser" role="dialog">
+    <div class="modal-dialog" style="width:40%; margin-top: 5%">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-blue">Add New User</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span class="required-field">First Name</span>
+                        <input type="text" name="dateTime" class="form-control" maxlength="150" ng-model="newUser.firstName" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Last Name</span>
+                        <input type="text" name="location" class="form-control" maxlength="150" ng-model="newUser.lastName" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Mobile</span>
+                        <input type="text" name="Mobile" class="form-control" maxlength="150" ng-model="newUser.mobile" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Email</span>
+                        <input type="text" name="Email" class="form-control" maxlength="150" ng-model="newUser.email" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <span class="required-field">Location</span>
+                        <input type="text" name="Location" class="form-control" maxlength="150" ng-model="newUser.location" ng-required="true">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal" ng-click="newUserSubmit()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
